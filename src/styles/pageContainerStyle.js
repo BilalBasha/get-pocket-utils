@@ -1,7 +1,7 @@
 import { css } from 'linaria';
 import { breakpointLargeHandset, breakpointTinyTablet } from '../responsive/breakpoints';
 
-const pageContainerStyle = css`e
+const pageContainerStyle = css`
     box-sizing: content-box;
     margin: 0 auto;
     max-width: 1128px;

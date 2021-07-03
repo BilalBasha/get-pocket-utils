@@ -6,6 +6,10 @@ import css from 'rollup-plugin-css-only'
 import image from '@rollup/plugin-image';
 import copy from 'rollup-plugin-copy';
 import multi from '@rollup/plugin-multi-entry';
+import path from 'path';
+import fs from 'fs';
+
+const cssPath = path.join(__dirname, 'libs/css/');
 
 const config = [
   {
@@ -17,30 +21,33 @@ const config = [
     ],
     output: [
       {
-        file: 'libs/functions.esm.js',
+        file: 'libs/js/functions.esm.js',
         format: 'es'
       },
       {
-        file: 'libs/icons.esm.js',
+        file: 'libs/js/icons.esm.js',
         format: 'es'
       },
       {
-        file: 'libs/responsive.esm.js',
+        file: 'libs/js/responsive.esm.js',
         format: 'es'
       },
       {
-        file: 'libs/styles.esm.js',
+        file: 'libs/js/styles.esm.js',
         format: 'es'
       }
     ],
     plugins: [
-      linaria({
-        // include:['src/mod3.js'],
-        // sourceMap: process.env.NODE_ENV !== 'production',
-      }),
+      linaria(),
       multi(),
       css({
-          output: 'get-pocket-styles.css'
+        output: function (styles, styleNodes) {
+          fs.mkdirSync(cssPath);
+          fs.writeFile(`${cssPath}get-pocket-styles.css`, styles, function (err) {
+            if (err) throw err;
+            console.log('File is created successfully.');
+          });
+        },
       }),
       babel({ babelHelpers: 'bundled' }),
       commonjs(),
