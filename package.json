@@ -1,6 +1,6 @@
 {
   "name": "get-pocket-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Test package",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "webpack-dev-server --hot --inline",
     "clean": "rm -rf libs && rm -rf ../learn-next/node_modules/get-pocket-utils/libs",
     "copy": "cp -r libs/ ../learn-next/node_modules/get-pocket-utils/libs/ && cp -r libs/get-pocket-styles.css ../learn-next/static/css/get-pocket-styles.css && cp -r libs/assets/ ../learn-next/static/assets/",
-    "build": "npm run clean && rollup -c && npm run copy"
+    "build": "npm run clean && rollup -c && npm run copy",
+    "uniqueBuild": "rm -rf libs && rollup -c"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",

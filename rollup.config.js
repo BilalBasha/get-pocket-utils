@@ -10,43 +10,38 @@ import path from 'path';
 import fs from 'fs';
 
 const cssPath = path.join(__dirname, 'libs/css/');
-
+let globalStyles = '';
+// fs.write(`${cssPath}get-pocket-styles.css`, styles, function (err) {
+  // if (err) throw err;
+  // console.log('File is created successfully.');
+// });
 const config = [
   {
-    input: [
-      'src/functions/index.js',
-      'src/icons/index.js',
-      'src/responsive/index.js',
-      'src/styles/index.js',
-    ],
-    output: [
-      {
+    input: 'src/functions/index.js',
+    output: {
         file: 'libs/js/functions.esm.js',
         format: 'es'
-      },
-      {
-        file: 'libs/js/icons.esm.js',
-        format: 'es'
-      },
-      {
-        file: 'libs/js/responsive.esm.js',
-        format: 'es'
-      },
-      {
-        file: 'libs/js/styles.esm.js',
-        format: 'es'
-      }
-    ],
+    },
+      // {
+      //   file: 'libs/js/icons.esm.js',
+      //   format: 'es'
+      // },
+      // {
+      //   file: 'libs/js/responsive.esm.js',
+      //   format: 'es'
+      // },
+      // {
+      //   file: 'libs/js/styles.esm.js',
+      //   format: 'es'
+      // }
+    
     plugins: [
       linaria(),
       multi(),
       css({
         output: function (styles, styleNodes) {
           fs.mkdirSync(cssPath);
-          fs.writeFile(`${cssPath}get-pocket-styles.css`, styles, function (err) {
-            if (err) throw err;
-            console.log('File is created successfully.');
-          });
+          fs.appendFileSync(`${cssPath}get-pocket-styles.css`, styles);
         },
       }),
       babel({ babelHelpers: 'bundled' }),
@@ -59,6 +54,45 @@ const config = [
       })
     ]
   },
+  {
+    input: 'src/icons/index.js',
+    output: {
+        file: 'libs/js/icons.esm.js',
+        format: 'es'
+    },
+    plugins: [
+      babel({ babelHelpers: 'bundled' }),
+      commonjs()
+    ]
+  },
+  {
+    input: 'src/responsive/index.js',
+    output: {
+        file: 'libs/js/responsive.esm.js',
+        format: 'es'
+    },
+    plugins: [
+      babel({ babelHelpers: 'bundled' }),
+      commonjs()
+    ]
+  },
+  {
+    input: 'src/styles/index.js',
+    output: {
+        file: 'libs/js/styles.esm.js',
+        format: 'es'
+    },
+    plugins: [
+      linaria(),
+      css({
+        output: function (styles, styleNodes) {
+          fs.appendFileSync(`${cssPath}get-pocket-styles.css`, styles);
+        },
+      }),
+    ]
+  }
 ];
+
+console.log('globalStyles', 'asd');
 
 export default config;
