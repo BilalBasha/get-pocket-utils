@@ -500,8 +500,6 @@ var Button = /*#__PURE__*/React__default['default'].forwardRef(function (props, 
     ref: ref
   }, remainingProps);
 
-  console.log(elementProps, remainingProps);
-
   if (href) {
     return /*#__PURE__*/React__default['default'].createElement("a", elementProps, children);
   } else {
@@ -1264,8 +1262,6 @@ var Pill = function Pill(props) {
       href = props.href,
       className = props.className;
   var remaining = objectWithoutProperties(props, ["children", "promoted", "href", "className"]);
-  console.log('pills');
-  console.log(pillStyle, className);
 
   var elementProps = _objectSpread2({
     className: classNames__default['default'](pillStyle, className, {

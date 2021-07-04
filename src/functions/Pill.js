@@ -8,9 +8,6 @@ const Pill = (props) => {
     const { children, promoted, href, className } = props;
     const remaining = objectWithoutProperties(props, ["children", "promoted", "href", "className"]);
 
-    console.log('pills');
-    console.log(pillStyle, className);
-
     const elementProps = {
         className: classNames(pillStyle, className, {
             promoted: promoted

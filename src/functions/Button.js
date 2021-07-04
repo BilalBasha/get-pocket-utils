@@ -28,7 +28,6 @@ const Button = React.forwardRef( (props, ref) => {
       ref: ref,
       ...remainingProps
     };
-    console.log(elementProps, remainingProps);
 
     if (href) {
         return (
