@@ -1,9 +1,10 @@
 import testIdAttribute from './testIdAttribute';
 
-export * from './icons';
 export * from './functions';
-export * from './styles';
+export * from './icons';
 export * from './responsive';
+export * from './styles';
+
 export {
     testIdAttribute  
 };

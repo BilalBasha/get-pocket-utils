@@ -1,13 +1,13 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import Add from '../Icons/Add';
+import GridView from '../Icons/GridView';
 
-const AddIcon = (props) => {
+const GridViewIcon = (props) => {
     return (
         <Icon {...props}>
-            <Add></Add>
+            <GridView></GridView>
         </Icon>
     )
 }
 
-export default AddIcon;
+export default GridViewIcon;

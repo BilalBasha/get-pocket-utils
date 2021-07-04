@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { itemStyle } from '../styles/popupStyle';
 
 const PopupMenuItem = ({
     children,
@@ -10,7 +11,7 @@ const PopupMenuItem = ({
     href,
     icon
 }) => {
-    const itemStyle = "iv7u18i";
+    // const itemStyle = "iv7u18i";
 
     const getContent = () => {
         return (

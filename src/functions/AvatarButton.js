@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from './Avatar';
+import buttonStyles from '../styles/buttonStyles';
 
 const AvatarButton = React.forwardRef(({
     id,
@@ -13,11 +14,8 @@ const AvatarButton = React.forwardRef(({
     className
 }) => {
 
-    const buttonStyles$1 = "b1344aws";
-    
-
     return (
-        <button type="button" className={classNames(buttonStyles$1, className)} title={label} onClick={onClick}>
+        <button type="button" className={classNames(buttonStyles, className)} title={label} onClick={onClick}>
             <Avatar size={size} src={src} altText={label}></Avatar>
         </button>
     )

@@ -1,13 +1,13 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import Add from '../Icons/Add';
+import Delete from '../Icons/Delete';
 
-const CrossIcon = (props) => {
+const DeleteIcon = (props) => {
     return (
         <Icon {...props}>
-            <Add></Add>
+            <Delete></Delete>
         </Icon>
     )
 }
 
-export default CrossIcon;
+export default DeleteIcon;

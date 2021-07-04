@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { createPopper } from '@popperjs/core';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import popupStyle from '../styles/popupStyles';
 
 import useCorrectEffect from './useCorrectEffect';
 
@@ -23,7 +24,7 @@ const Popup = function Popup({
     popperOptions,
     forceShow
 }) {
-    const popupStyle = "p1is21nw";
+    // const popupStyle = "p1is21nw";
     let popper, animationTimeout;
     const globalEvents = ['click', 'touch', 'focus'];
     

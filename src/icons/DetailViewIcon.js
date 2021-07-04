@@ -1,13 +1,13 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import Add from '../Icons/Add';
+import DetailView from '../Icons/DetailView';
 
-const AddIcon = (props) => {
+const DetailViewIcon = (props) => {
     return (
         <Icon {...props}>
-            <Add></Add>
+            <DetailView></DetailView>
         </Icon>
     )
 }
 
-export default AddIcon;
+export default DetailViewIcon;

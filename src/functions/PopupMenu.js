@@ -7,6 +7,8 @@ import useCorrectEffect from './useCorrectEffect';
 import useViewport from './useViewPort';
 import Modal from './Modal';
 import Popup from './Popup';
+import popupStyle from '../styles/popupStyles';
+import menuStyle from '../styles/menuStyles';
 
 const PopupMenu = ({
     children,
@@ -21,8 +23,8 @@ const PopupMenu = ({
     forceShow
 }) => {
 
-    const popupStyle$1 = "psmbvm8";
-    const menuStyle = "m158lzzu";
+    // const popupStyle$1 = "psmbvm8";
+    // const menuStyle = "m158lzzu";
 
     const viewport = useViewport(); // if viewport not available, we're probably SSR and so set the default to the
     const viewportWidth = viewport ? viewport.width : screenLargeHandset + 1;
@@ -69,11 +71,11 @@ const PopupMenu = ({
     }
     let renderHtml;
     if (isMobile) {
-        renderHtml = <Modal title={title} appRootSelector={appRootSelector} screenReaderLabel={screenReaderLabel} handleClose={handleModalClose} isOpen={isMenuOpen} forceMobile="true">
+        renderHtml = <Modal title={title} appRootSelector={appRootSelector} screenReaderLabel={screenReaderLabel} handleClose={handleModalClose} isOpen={isMenuOpen} forceMobile={true}>
             { getContent() }
         </Modal>
     } else {
-        renderHtml = <Popup trigger={trigger} className={popupStyle$1} popperOptions={popperOptions} forceShow={forceShow} onClose={handleModalClose}>
+        renderHtml = <Popup trigger={trigger} className={popupStyle} popperOptions={popperOptions} forceShow={forceShow} onClose={handleModalClose}>
             { getContent() }
         </Popup>
     }

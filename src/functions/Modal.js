@@ -2,13 +2,15 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import CrossIcon from '../icons/CrossIcon';
 import isIosDevice from './isIosDevice';
 
-var modalStyles = "m1gbisw7";
-var overlayStyles = "o1ohlj7h";
+import { overlayStyles, modalStyles, closeButtonStyles } from '../styles/modalStyles';
+
+// var modalStyles = "m1gbisw7";
+// var overlayStyles = "o1ohlj7h";
 
 var Modal = function Modal({
   title,
@@ -45,9 +47,9 @@ var Modal = function Modal({
         onAfterOpen={ () => { setReadyAnimate(true); disableBodyScroll(modalContentRef); onAfterOpen(); } }
         onAfterClose={ () => { setReadyAnimate(false); enableBodyScroll(modalContentRef); clearAllBodyScrollLocks(); onAfterClose(); } }
         shouldCloseOnOverlayClick={ shouldCloseOnOverlayClick }
-        className={classnames([className, modalStyles, modalContentClassName, {'animation-base': doesAnimateTransition,'animation-show': doesAnimateTransition && readyAnimate && isOpen,'animation-hide': doesAnimateTransition && readyAnimate && !isOpen,'force-mobile': forceMobile}])}
-        overlayClassName={classnames([overlayStyles, overlayClassName, {'animation-base': doesAnimateTransition,'animation-show': doesAnimateTransition && readyAnimate && isOpen,'animation-hide': doesAnimateTransition && readyAnimate && !isOpen}])}
-        portalClassName={classnames([portalClassName])}
+        className={classNames([className, modalStyles, modalContentClassName, {'animation-base': doesAnimateTransition,'animation-show': doesAnimateTransition && readyAnimate && isOpen,'animation-hide': doesAnimateTransition && readyAnimate && !isOpen,'force-mobile': forceMobile}])}
+        overlayClassName={classNames([overlayStyles, overlayClassName, {'animation-base': doesAnimateTransition,'animation-show': doesAnimateTransition && readyAnimate && isOpen,'animation-hide': doesAnimateTransition && readyAnimate && !isOpen}])}
+        portalClassName={classNames([portalClassName])}
         closeTimeoutMS={closeTimeoutMS}
         >
           { showCloseButton ? <CloseButton></CloseButton> : null}
@@ -57,7 +59,7 @@ var Modal = function Modal({
   )
 };
 
-var closeButtonStyles = "c9xoh5";
+// var closeButtonStyles = "c9xoh5";
 
 var CloseButton = function CloseButton(_ref2) {
   var handleClose = _ref2.handleClose;

@@ -2,15 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import objectWithoutProperties from '../helpers/objectWithOutProperties';
+import buttonStyles from '../styles/buttonStyles';
 
 
 const Button = React.forwardRef( (props, ref) => {
 
     const { children, variant, size, href, disabled, className } = props;
     const remainingProps = objectWithoutProperties(props, ["children", "variant", "size", "href", "disabled", "className"]);
-
-    const buttonStyles = "b1344aws";
-
 
     const classes = classNames(buttonStyles, className, {
         primary: variant === '' || variant === 'primary',
@@ -30,6 +28,7 @@ const Button = React.forwardRef( (props, ref) => {
       ref: ref,
       ...remainingProps
     };
+    console.log(elementProps, remainingProps);
 
     if (href) {
         return (

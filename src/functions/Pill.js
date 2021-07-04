@@ -2,10 +2,14 @@ import React from 'react';
 import classNames from "classnames";
 import PropTypes from 'prop-types';
 import objectWithoutProperties from "../helpers/objectWithOutProperties";
+import pillStyle from '../styles/pillStyle'
 
 const Pill = (props) => {
     const { children, promoted, href, className } = props;
-    const remaining = objectWithoutProperties(_ref, ["children", "promoted", "href", "className"]);
+    const remaining = objectWithoutProperties(props, ["children", "promoted", "href", "className"]);
+
+    console.log('pills');
+    console.log(pillStyle, className);
 
     const elementProps = {
         className: classNames(pillStyle, className, {

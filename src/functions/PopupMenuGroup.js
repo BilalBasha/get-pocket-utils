@@ -1,7 +1,8 @@
 import React from 'react';
+import { groupStyle } from '../styles/popupStyle';
 
 const PopupMenuGroup = ({children}) => {
-    const groupStyle = "gx34gyr";
+    // const groupStyle = "gx34gyr";
 
     return (
         <li className={groupStyle}>

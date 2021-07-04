@@ -1,5 +1,3 @@
-import React from 'react';
-
 const testIdAttribute = (id) => {
   if (process.env.NODE_ENV === 'test' || process.env.SHOW_DEV === 'included') {
     return {
@@ -8,5 +6,9 @@ const testIdAttribute = (id) => {
   }
   return undefined;
 }
+
+// export {
+  // testIdAttribute  
+// };
 
 export default testIdAttribute;

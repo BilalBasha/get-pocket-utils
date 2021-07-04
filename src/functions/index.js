@@ -3,7 +3,7 @@ import { ViewPortProvider } from './ViewPortProvider';
 import PageContainer from './PageContainer';
 import Logo from './Logo';
 import LogoMark from './LogoMark';
-import GlobalNavV2 from './GlobalNavV2';
+// import GlobalNavV2 from './GlobalNavV2';
 import useViewport from './useViewPort';
 import Button from './Button';
 import WithTooltip from './WithTooltip';
@@ -20,7 +20,7 @@ export {
     PageContainer,
     Logo,
     LogoMark,
-    GlobalNavV2 as GlobalNav,
+    // GlobalNavV2 as GlobalNav,
     useViewport,
     Button,
     WithTooltip,

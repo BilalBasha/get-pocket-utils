@@ -89,5 +89,5 @@ export {
     PinIcon,
     WebViewIcon,
     PermanentCopyIcon,
-    LinkCopyIcon
+    LinkCopyIcon,
 };

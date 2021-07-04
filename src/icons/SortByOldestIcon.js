@@ -1,13 +1,13 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import Add from '../Icons/Add';
+import SortByOldest from '../Icons/SortByOldest';
 
-const AddIcon = (props) => {
+const SortByOldestIcon = (props) => {
     return (
         <Icon {...props}>
-            <Add></Add>
+            <SortByOldest></SortByOldest>
         </Icon>
     )
 }
 
-export default AddIcon;
+export default SortByOldestIcon;

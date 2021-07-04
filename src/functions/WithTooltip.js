@@ -1,6 +1,7 @@
 import React from 'react';
 import { cx } from 'linaria';
 import PropTypes from 'prop-types';
+import { tooltipStyles, placementTop, placementBottom, delayStyle } from '../styles/tooltipStyles';
 
 const WithTooltip = ({
     children,
@@ -9,11 +10,12 @@ const WithTooltip = ({
     placement,
     delay
 }) => {
+    
 
-    const tooltipStyles = "t1221eea";
-    const placementBottom = "pzhe358";
-    const placementTop = "pmdugmx";
-    const delayStyle = "d1ihjjkq";
+    // const tooltipStyles = "t1221eea";
+    // const placementBottom = "pzhe358";
+    // const placementTop = "pmdugmx";
+    // const delayStyle = "d1ihjjkq";
  
     if (typeof placement === 'undefined') {
         placement = 'bottom';
