@@ -1232,13 +1232,15 @@ var enableBodyScroll = function enableBodyScroll(targetElement) {
   }
 };
 
+var drawerStyles = "dym0dwq";
+
 var Drawer = function Drawer(_ref) {
   var children = _ref.children,
       isOpen = _ref.isOpen,
       handleClose = _ref.handleClose,
       appRootSelector = _ref.appRootSelector,
       screenReaderLabel = _ref.screenReaderLabel;
-  var drawerStyles = "dw4vh5s";
+  // const drawerStyles = "dw4vh5s";
   return /*#__PURE__*/React__default['default'].createElement(Modal, {
     appRootSelector: appRootSelector,
     screenReaderLabel: screenReaderLabel,

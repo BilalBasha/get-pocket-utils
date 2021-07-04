@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
+import drawerStyles from '../styles/drawerStyles';
 
 const Drawer = ({
     children,
@@ -8,7 +9,7 @@ const Drawer = ({
     appRootSelector,
     screenReaderLabel
 }) => {
-    const drawerStyles = "dw4vh5s";
+    // const drawerStyles = "dw4vh5s";
 
     return (
         <Modal appRootSelector={appRootSelector}

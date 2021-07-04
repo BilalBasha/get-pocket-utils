@@ -1,13 +1,13 @@
 {
   "name": "get-pocket-utils",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Test package",
   "main": "./libs/js/index.js",
   "scripts": {
     "rollup": "./node_modules/.bin/rollup -c",
     "start": "webpack-dev-server --hot --inline",
     "clean": "rm -rf libs && rm -rf ../learn-next/node_modules/get-pocket-utils/libs",
-    "copy": "cp -r libs/ ../learn-next/node_modules/get-pocket-utils/libs/ && cp -r libs/css/get-pocket-styles.css ../learn-next/static/css/get-pocket-styles.css && cp -r libs/assets/ ../learn-next/static/assets/",
+    "copy": "cp -r libs/ ../learn-next/node_modules/get-pocket-utils/libs/",
     "build": "npm run clean && rollup -c && npm run copy",
     "uniqueBuild": "rm -rf libs && rollup -c"
   },
