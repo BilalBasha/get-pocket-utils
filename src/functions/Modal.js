@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import CrossIcon from '../icons/CrossIcon';
 import isIosDevice from './isIosDevice';
 
-import { overlayStyles, modalStyles, closeButtonStyles } from '../styles/modalStyles';
+import { overlayStyles, modalStyles, closeButtonStyles, modalBodyStyles } from '../styles/modalStyles';
 
 // var modalStyles = "m1gbisw7";
 // var overlayStyles = "o1ohlj7h";
@@ -169,8 +169,6 @@ Modal.defaultProps = {
   doesAnimateTransition: true,
   closeTimeoutMS: 75
 };
-
-export default Modal;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -395,4 +393,57 @@ var enableBodyScroll = function enableBodyScroll(targetElement) {
       restoreOverflowSetting();
     }
   }
+};
+
+/* ------------Modal Body Starts---------------*/
+// var modalBodyStyles = "mweydr9";
+const ModalBody = ({ children, className }) => {
+
+  return (
+    <div className={ classNames(modalBodyStyles, className) }>
+      { children }
+    </div>
+  )
+
+};
+
+/* ------------Modal Body Ends---------------*/
+
+/* ------------Modal Footer Starts---------------*/
+
+var ModalFooter = function ModalFooter({
+  children,
+  hasBorder,
+  isSticky,
+  className
+}) {
+
+  return (
+    <div className={classNames(modalFooterStyles, {
+        bordered: hasBorder,
+        sticky: isSticky
+      }, className)}
+    >
+      { children }
+    </div>
+  )
+}
+
+ModalFooter.propTypes = {
+  hasBorder: PropTypes.bool,
+  isSticky: PropTypes.bool
+};
+ModalFooter.defaultProps = {
+  hasBorder: true,
+  isSticky: true
+};
+
+/* ------------Modal Footer Ends---------------*/
+
+
+
+export {
+  Modal,
+  ModalBody,
+  ModalFooter
 };

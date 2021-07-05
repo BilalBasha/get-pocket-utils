@@ -70,6 +70,28 @@ function _objectSpread2(target) {
   return target;
 }
 
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -627,7 +649,7 @@ WithTooltip.propTypes = {
   label: PropTypes__default['default'].string.isRequired
 };
 
-var InputWrapper = function InputWrapper(_ref) {
+var InputWrapper$1 = function InputWrapper(_ref) {
   var labelText = _ref.labelText,
       helperText = _ref.helperText,
       error = _ref.error,
@@ -679,7 +701,7 @@ var TextInput = function TextInput(_ref) {
       onFocus = _ref.onFocus,
       onBlur = _ref.onBlur,
       inputStyles = _ref.inputStyles;
-  return /*#__PURE__*/React__default['default'].createElement(InputWrapper, {
+  return /*#__PURE__*/React__default['default'].createElement(InputWrapper$1, {
     labelText: labelText,
     helperText: helperText,
     error: error,
@@ -779,9 +801,15 @@ var Icon = function Icon(_ref) {
       id = _ref.id,
       title = _ref.title,
       description = _ref.description;
-  var iconStyle = "i1acz0ik"; // if (className && !className.includes('icon')) {
-  // className = className.concat(' icon');
-  // }
+  var iconStyle = "i1acz0ik";
+
+  if (!className || !className.includes('icon')) {
+    if (!className) {
+      className = '';
+    }
+
+    className = className.concat(' icon');
+  }
 
   var ariaTitle = '';
   var ariaDescription = '';
@@ -800,7 +828,7 @@ var Icon = function Icon(_ref) {
   }, description) : null]));
 };
 
-var Add = function Add() {
+var Cross = function Cross() {
   return /*#__PURE__*/React__default['default'].createElement("svg", {
     fill: "currentColor",
     xmlns: "http://www.w3.org/2000/svg",
@@ -808,13 +836,13 @@ var Add = function Add() {
     "aria-hidden": "true"
   }, /*#__PURE__*/React__default['default'].createElement("path", {
     fillRule: "evenodd",
-    d: "M12 3a1 1 0 011 1v7h7a1 1 0 110 2h-7v7a1 1 0 11-2 0v-7H4a1 1 0 110-2h7V4a1 1 0 011-1z",
+    d: "M4.293 4.293a1 1 0 011.414 0L12 10.586l6.293-6.293a1 1 0 111.414 1.414L13.414 12l6.293 6.293a1 1 0 01-1.414 1.414L12 13.414l-6.293 6.293a1 1 0 01-1.414-1.414L10.586 12 4.293 5.707a1 1 0 010-1.414z",
     clipRule: "evenodd"
   }));
 };
 
 var CrossIcon = function CrossIcon(props) {
-  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(Add, null));
+  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(Cross, null));
 };
 
 var isIosDevice = typeof window !== 'undefined' && window.navigator && window.navigator.platform && (/iP(ad|hone|od)/.test(window.navigator.platform) || window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
@@ -822,6 +850,7 @@ var isIosDevice = typeof window !== 'undefined' && window.navigator && window.na
 var modalStyles = "mfumm5a";
 var overlayStyles = "o1v7qbru";
 var closeButtonStyles = "c1dxo1rx";
+var modalBodyStyles = "mk1nlns";
 
 // var overlayStyles = "o1ohlj7h";
 
@@ -1230,6 +1259,43 @@ var enableBodyScroll = function enableBodyScroll(targetElement) {
       restoreOverflowSetting();
     }
   }
+};
+/* ------------Modal Body Starts---------------*/
+// var modalBodyStyles = "mweydr9";
+
+
+var ModalBody = function ModalBody(_ref3) {
+  var children = _ref3.children,
+      className = _ref3.className;
+  return /*#__PURE__*/React__default['default'].createElement("div", {
+    className: classNames__default['default'](modalBodyStyles, className)
+  }, children);
+};
+/* ------------Modal Body Ends---------------*/
+
+/* ------------Modal Footer Starts---------------*/
+
+
+var ModalFooter = function ModalFooter(_ref4) {
+  var children = _ref4.children,
+      hasBorder = _ref4.hasBorder,
+      isSticky = _ref4.isSticky,
+      className = _ref4.className;
+  return /*#__PURE__*/React__default['default'].createElement("div", {
+    className: classNames__default['default'](modalFooterStyles, {
+      bordered: hasBorder,
+      sticky: isSticky
+    }, className)
+  }, children);
+};
+
+ModalFooter.propTypes = {
+  hasBorder: PropTypes__default['default'].bool,
+  isSticky: PropTypes__default['default'].bool
+};
+ModalFooter.defaultProps = {
+  hasBorder: true,
+  isSticky: true
 };
 
 var drawerStyles = "dym0dwq";
@@ -1838,6 +1904,177 @@ var PopupMenuGroup = function PopupMenuGroup(_ref) {
   }, /*#__PURE__*/React__default['default'].createElement("ul", null, children));
 };
 
+var TextAreaAutoSizeClass = /*#__PURE__*/function () {
+  function TextAreaAutoSizeClass(props) {
+    var _this = this;
+
+    _classCallCheck(this, TextAreaAutoSizeClass);
+
+    _defineProperty(this, "componentDidUpdate", function () {
+      _this.textarea.current && autosize.update(_this.textarea.current);
+    });
+
+    this.props = props;
+    this.state = {
+      lineHeight: null
+    };
+    this.textarea = this.props.innerRef || /*#__PURE__*/React__default['default'].createRef();
+
+    this.onResize = function (e) {
+      if (this.props.onResize) {
+        this.props.onResize(e);
+      }
+    };
+
+    this.updateLineHeight = function () {
+      if (this.textarea.current) {
+        this.setState({
+          lineHeight: getLineHeight(this.textarea.current)
+        });
+      }
+    };
+
+    this.onChange = function (e) {
+      var onChange = this.props.onChange;
+      this.currentValue = e.currentTarget.value;
+      onChange && onChange(e);
+    };
+  }
+
+  _createClass(TextAreaAutoSizeClass, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var maxRows = this.props.maxRows;
+      var async = this.props.async;
+
+      if (typeof maxRows === "number") {
+        this.updateLineHeight();
+      }
+
+      if (typeof maxRows === "number" || async) {
+        /*
+          the defer is needed to:
+            - force "autosize" to activate the scrollbar when this.props.maxRows is passed
+            - support StyledComponents (see #71)
+        */
+        setTimeout(function () {
+          return this.textarea.current && autosize(this.textarea.current);
+        });
+      } else {
+        this.textarea.current && autosize(this.textarea.current);
+      }
+
+      if (this.textarea.current) {
+        this.textarea.current.addEventListener(RESIZED, this.onResize);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.textarea.current) {
+        this.textarea.current.removeEventListener(RESIZED, this.onResize);
+        autosize.destroy(this.textarea.current);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      this.props.onResize;
+      var maxRows = this.props.maxRows;
+      this.props.onChange;
+      var style = this.props.style;
+      this.props.innerRef;
+      var children = this.props.children;
+      var lineHeight = _a.state.lineHeight;
+      var remainingProps = objectWithoutProperties(this.props, ["onResize", "maxRows", "onChange", "style", "innerRef", "children"]);
+      var maxHeight = maxRows && lineHeight ? lineHeight * maxRows : null;
+      return /*#__PURE__*/React__default['default'].createElement("textarea", _extends({}, remainingProps, {
+        onChange: this.onChange,
+        style: maxHeight ? Object.assign(style, {
+          maxHeight: maxHeight
+        }) : style,
+        ref: this.textarea
+      }), children); // return (React.createElement("textarea", __assign({}, props, { onChange: this.onChange, style: maxHeight ? __assign({}, style, { maxHeight: maxHeight }) : style, ref: this.textarea }), children));
+    }
+  }]);
+
+  return TextAreaAutoSizeClass;
+}();
+
+TextAreaAutoSizeClass.propTypes = {
+  rows: PropTypes__default['default'].number,
+  maxRows: PropTypes__default['default'].number,
+  onResize: PropTypes__default['default'].func,
+  innerRef: PropTypes__default['default'].object,
+  async: PropTypes__default['default'].bool
+};
+TextAreaAutoSizeClass.defaultProps = {
+  rows: 1,
+  async: false
+};
+var TextAreaAutosize = /*#__PURE__*/React__default['default'].forwardRef(function (props, ref) {
+  return /*#__PURE__*/React__default['default'].createElement(TextAreaAutoSizeClass, __assign({}, props, {
+    innerRef: ref
+  }));
+});
+
+var defaultTextareaStyles = "dkx4pkb";
+
+var TextArea = function TextArea(_ref) {
+  var name = _ref.name,
+      initialRows = _ref.initialRows,
+      maxRows = _ref.maxRows,
+      characterLimit = _ref.characterLimit,
+      showCharacterLimit = _ref.showCharacterLimit,
+      labelText = _ref.labelText,
+      helperText = _ref.helperText,
+      value = _ref.value,
+      error = _ref.error,
+      displayErrorInline = _ref.displayErrorInline,
+      className = _ref.className,
+      disabled = _ref.disabled,
+      onChange = _ref.onChange,
+      onFocus = _ref.onFocus,
+      onBlur = _ref.onBlur,
+      textareaStyles = _ref.textareaStyles;
+  return /*#__PURE__*/React__default['default'].createElement(InputWrapper, {
+    labelText: labelText,
+    helperText: helperText,
+    error: error,
+    displayErrorInline: displayErrorInline,
+    className: className,
+    disabled: disabled,
+    name: name,
+    showCharacterLimit: showCharacterLimit,
+    characterLimit: characterLimit,
+    value: value
+  }, /*#__PURE__*/React__default['default'].createElement(TextAreaAutosize, _extends({
+    className: classNames__default['default'](defaultTextareaStyles, textareaStyles),
+    name: name,
+    rows: initialRows,
+    maxRows: maxRows,
+    value: value,
+    disabled: disabled,
+    onChange: onChange,
+    onFocus: onFocus,
+    onBlur: onBlur,
+    maxLength: characterLimit
+  }, testIdAttribute('textarea-input'))));
+};
+
+var Add = function Add() {
+  return /*#__PURE__*/React__default['default'].createElement("svg", {
+    fill: "currentColor",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    fillRule: "evenodd",
+    d: "M12 3a1 1 0 011 1v7h7a1 1 0 110 2h-7v7a1 1 0 11-2 0v-7H4a1 1 0 110-2h7V4a1 1 0 011-1z",
+    clipRule: "evenodd"
+  }));
+};
+
 var AddIcon$9 = function AddIcon(props) {
   return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(Add, null));
 };
@@ -2395,16 +2632,83 @@ var PinIcon = function PinIcon(props) {
   return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(OverflowMenu, null));
 };
 
+var WebView = function WebView() {
+  return /*#__PURE__*/React__default['default'].createElement("svg", {
+    fill: "currentColor",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    fill: "currentColor",
+    fillRule: "evenodd",
+    d: "M12 2c-.747 0-1.75.712-2.625 2.636-.19.416-.364.873-.52 1.364h6.29c-.156-.491-.33-.948-.52-1.364C13.751 2.712 12.747 2 12 2zM7.554 3.808c-.302.664-.565 1.4-.786 2.192H4a10.034 10.034 0 014.076-3.2c-.19.322-.363.66-.52 1.008zM6.326 8H2.832A9.966 9.966 0 002 12c0 1.422.297 2.775.832 4h3.494A24.111 24.111 0 016 12c0-1.397.114-2.745.326-4zm.442 10H4a10.035 10.035 0 004.076 3.2c-.19-.322-.363-.66-.52-1.008-.303-.664-.566-1.4-.787-2.192zm2.087 0h6.29c-.156.491-.33.948-.52 1.364C13.751 21.288 12.747 22 12 22c-.747 0-1.75-.712-2.625-2.636-.19-.416-.364-.873-.52-1.364zm6.788-2H8.357A21.873 21.873 0 018 12c0-1.428.129-2.778.357-4h7.286c.228 1.222.357 2.572.357 4s-.129 2.778-.357 4zm1.589 2c-.22.792-.484 1.528-.786 2.192-.158.347-.332.686-.521 1.009A10.034 10.034 0 0020 18h-2.77zm3.936-2h-3.494A24.11 24.11 0 0018 12a24.11 24.11 0 00-.326-4h3.494A9.966 9.966 0 0122 12a9.966 9.966 0 01-.832 4zM15.925 2.8A10.034 10.034 0 0120 6h-2.77a15.076 15.076 0 00-.785-2.192 10.89 10.89 0 00-.521-1.008zM12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z",
+    clipRule: "evenodd"
+  }));
+};
+
 var WebViewIcon = function WebViewIcon(props) {
-  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(IosShare, null));
+  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(WebView, null));
+};
+
+var PermanentCopy = function PermanentCopy() {
+  return /*#__PURE__*/React__default['default'].createElement("svg", {
+    fill: "currentColor",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React__default['default'].createElement("g", {
+    fill: "currentColor",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    d: "M7 4a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-4a1 1 0 112 0v4a4 4 0 01-4 4H7a4 4 0 01-4-4V6a4 4 0 014-4h2a1 1 0 010 2z"
+  }), /*#__PURE__*/React__default['default'].createElement("path", {
+    d: "M7 9a1 1 0 011-1h3a1 1 0 110 2H8a1 1 0 01-1-1zM7 13a1 1 0 011-1h8a1 1 0 110 2H8a1 1 0 01-1-1zM7 17a1 1 0 011-1h8a1 1 0 110 2H8a1 1 0 01-1-1zM13 3a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 11-2 0V5.414l-3.293 3.293a1 1 0 11-1.414-1.414L17.586 4H14a1 1 0 01-1-1z"
+  })));
 };
 
 var PermanentCopyIcon = function PermanentCopyIcon(props) {
-  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(Menu, null));
+  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(PermanentCopy, null));
 };
 
 var LinkCopyIcon = function LinkCopyIcon(props) {
   return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(Menu, null));
+};
+
+var Save = function Save() {
+  return /*#__PURE__*/React__default['default'].createElement("svg", {
+    fill: "currentColor",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    d: "M2 5a2 2 0 012-2h16a2 2 0 012 2H2zm2 0H2v6c0 5.523 4.477 10 10 10s10-4.477 10-10V5h-2v6a8 8 0 11-16 0V5z",
+    clipRule: "evenodd"
+  }), /*#__PURE__*/React__default['default'].createElement("path", {
+    fillRule: "evenodd",
+    d: "M7.293 9.293a1 1 0 011.414 0L12 12.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+    clipRule: "evenodd"
+  }));
+};
+
+var SaveIcon = function SaveIcon(props) {
+  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(Save, null));
+};
+
+var SaveFilled = function SaveFilled() {
+  return /*#__PURE__*/React__default['default'].createElement("svg", {
+    fill: "currentColor",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    d: "M12 21c5.523 0 10-4.477 10-10V5a2 2 0 00-2-2H4c-1.105 0-2 .893-2 1.998V11c0 5.523 4.477 10 10 10zM8.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L12 12.586 8.707 9.293z",
+    clipRule: "evenodd"
+  }));
+};
+
+var SaveFilledIcon = function SaveFilledIcon(props) {
+  return /*#__PURE__*/React__default['default'].createElement(Icon, props, /*#__PURE__*/React__default['default'].createElement(SaveFilled, null));
 };
 
 exports.AddIcon = AddIcon$9;
@@ -2440,6 +2744,9 @@ exports.Logo = Logo;
 exports.LogoMark = LogoMark;
 exports.MarginsIcon = AddIcon$5;
 exports.MenuIcon = MenuIcon;
+exports.Modal = Modal;
+exports.ModalBody = ModalBody;
+exports.ModalFooter = ModalFooter;
 exports.OverflowMenuIcon = OverflowMenuIcon;
 exports.PageContainer = PageContainer;
 exports.PermanentCopyIcon = PermanentCopyIcon;
@@ -2454,10 +2761,13 @@ exports.ProfileIcon = ProfileIcon;
 exports.RedditMonoIcon = RedditMonoIcon;
 exports.RemoveIcon = AddIcon$6;
 exports.ReportIcon = AddIcon$7;
+exports.SaveFilledIcon = SaveFilledIcon;
+exports.SaveIcon = SaveIcon;
 exports.SearchIcon = SearchIcon;
 exports.SortByNewestIcon = SortByNewestIcon;
 exports.SortByOldestIcon = SortByOldestIcon;
 exports.TagIcon = TagIcon;
+exports.TextArea = TextArea;
 exports.TextInput = TextInput;
 exports.TextSettingsIcon = AddIcon;
 exports.TextSizeIcon = AddIcon$4;

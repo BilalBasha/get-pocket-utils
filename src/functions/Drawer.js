@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from './Modal';
+import { Modal } from './Modal';
 import drawerStyles from '../styles/drawerStyles';
 
 const Drawer = ({

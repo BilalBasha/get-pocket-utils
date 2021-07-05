@@ -170,10 +170,18 @@ const closeButtonStyles = css`
     }
 `;
 
+
+const modalBodyStyles = css`
+    padding: var(--spacing150);
+    font-family: var(--fontSansSerif);
+    font-size: var(--fontSize100);
+`; 
+
 export {
     modalStyles,
     overlayStyles,
-    closeButtonStyles
+    closeButtonStyles,
+    modalBodyStyles
 }
 
 // .c9xoh5 {

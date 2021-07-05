@@ -1,11 +1,11 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import IosShare from '../Icons/IosShare';
+import WebView from '../Icons/WebView';
 
 const WebViewIcon = (props) => {
     return (
         <Icon {...props}>
-            <IosShare></IosShare>
+            <WebView></WebView>
         </Icon>
     )
 }

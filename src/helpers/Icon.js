@@ -15,9 +15,12 @@ const Icon = ({ children, className, id, title, description }) => {
         }
     }`;
 
-    // if (className && !className.includes('icon')) {
-        // className = className.concat(' icon');
-    // }
+    if (!className || !className.includes('icon')) {
+        if (!className) {
+            className = '';
+        }
+        className = className.concat(' icon');
+    }
 
     const ariaTitle = '';
     const ariaDescription = '';

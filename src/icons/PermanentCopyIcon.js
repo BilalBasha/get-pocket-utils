@@ -1,11 +1,11 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import Menu from '../Icons/Menu';
+import PermanentCopy from '../Icons/PermanentCopy';
 
 const PermanentCopyIcon = (props) => {
     return (
         <Icon {...props}>
-            <Menu></Menu>
+            <PermanentCopy></PermanentCopy>
         </Icon>
     )
 }

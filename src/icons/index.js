@@ -43,6 +43,8 @@ import PinIcon from './PinIcon';
 import WebViewIcon from './WebViewIcon';
 import PermanentCopyIcon from './PermanentCopyIcon';
 import LinkCopyIcon from './LinkCopyIcon';
+import SaveIcon from './SaveIcon';
+import SaveFilledIcon from './SaveFilledIcon';
 
 export {
     AddIcon,
@@ -90,4 +92,6 @@ export {
     WebViewIcon,
     PermanentCopyIcon,
     LinkCopyIcon,
+    SaveIcon,
+    SaveFilledIcon
 };

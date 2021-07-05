@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { screenLargeHandset } from '../responsive/screenSizes';
 import useCorrectEffect from './useCorrectEffect';
 import useViewport from './useViewPort';
-import Modal from './Modal';
+import { Modal } from './Modal';
 import Popup from './Popup';
 import popupStyle from '../styles/popupStyles';
 import menuStyle from '../styles/menuStyles';

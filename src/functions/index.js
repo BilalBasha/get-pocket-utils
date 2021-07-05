@@ -13,6 +13,8 @@ import Pill from './Pill';
 import PopupMenu from './PopupMenu';
 import PopupMenuItem from './PopupMenuItem';
 import PopupMenuGroup from './PopupMenuGroup';
+import TextArea from './TextArea';
+import { Modal, ModalBody, ModalFooter } from './Modal';
 
 export {
     ViewPortProvider,
@@ -29,5 +31,9 @@ export {
     Pill,
     PopupMenu,
     PopupMenuItem,
-    PopupMenuGroup
+    PopupMenuGroup,
+    TextArea,
+    Modal,
+    ModalBody,
+    ModalFooter
 };

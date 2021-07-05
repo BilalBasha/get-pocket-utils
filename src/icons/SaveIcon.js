@@ -1,13 +1,13 @@
 import React from 'react';
 import Icon from '../helpers/Icon';
-import Cross from '../Icons/Cross';
+import Save from '../Icons/Save';
 
-const CrossIcon = (props) => {
+const SaveIcon = (props) => {
     return (
         <Icon {...props}>
-            <Cross></Cross>
+            <Save></Save>
         </Icon>
     )
 }
 
-export default CrossIcon;
+export default SaveIcon;
